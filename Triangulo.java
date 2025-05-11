@@ -11,6 +11,11 @@ public class Triangulo {
         p = (a + b + c) / 2.0;
         return Math.sqrt(p * (p - a) * (p - b) * (p - c));
     }
+    public double perimetroTriangulo(){
+        double perimetro;
+        perimetro = a + b + c;
+        return perimetro;
+    }
 }
 
 
