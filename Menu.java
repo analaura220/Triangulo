@@ -4,29 +4,49 @@ import java.util.Scanner;
 
 public class Menu {
     public static void main(String[] args) {
-        Triangulo x,y;
-        double areaX,areaY;
+        Triangulo x;
+        double areaX;
         Scanner sc = new Scanner(System.in);
+        int i=0, ver=0, op, opver=0;
         
         x = new Triangulo();
-        y = new Triangulo();
 
-        System.out.println("Digite as medidas do triangulo X: ");
-        x.a = sc.nextDouble();
-        x.b = sc.nextDouble();
-        x.c = sc.nextDouble();
+        while(ver==0) {
+            System.out.println("Digite as medidas do triangulo X: ");
+            x.a = sc.nextDouble();
+            x.b = sc.nextDouble();
+            x.c = sc.nextDouble();
 
-        System.out.println("Digite as medidas do triangulo Y: ");
-        y.a = sc.nextDouble();
-        y.b = sc.nextDouble();
-        y.c = sc.nextDouble();
+            areaX = x.areaTriangulo();
+            
+            if (i==0) { //primeiro triangulo sempre sera o maior digitado
+                areaMaior = areaX;
+                maiorTriangulo = i+1;
+            }
+            else if(areaX>maiorTriangulo) { //verifica se o triangulo digitado eh maior que o maior triangulo atualmente
+                areaMaior = areaX;
+                maiorTriangulo = i+1;
+            }
 
-        areaX = x.areaTriangulo();
-        areaY= y.areaTriangulo();
+            while(opver==0) { //loop de verificacao
+                System.out.println("Digite 1 para calular a area de um novo triangulo ou 0 para sair: ");
+                op = sc.nextInt();
+                if (op==0) {
+                    ver++;
+                    opver++;
+                }
+                else if (op==1) {
+                    opver++;
+                }
+                else {
+                    System.out.println("Operaao invalida, tente novamente.");
+                }
+            }
+            opver = 0;
+            i++;
+        }
         
-        System.out.printf("Area do triangula X: %.2f",areaX);
-        System.out.printf("\nArea do triangula Y: %.2f",areaY);
-        System.out.println("\nMaior área: " + ((areaX > areaY) ? 'X':'Y'));
+        System.out.println("\nMaior triangulo " + maiorTriangulo + ", área: " + areaMaior);
 
         sc.close();
     }
